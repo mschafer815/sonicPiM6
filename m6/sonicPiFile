@@ -1,0 +1,80 @@
+# Mackenzie Schafer
+# Sonic Pi Music Project
+# System Name: "That Sweet Alien Beat"
+# 12/2/18
+
+
+# This loop give us a cool steady beat
+live_loop :steady_beat do
+  sample :bd_haus
+  sleep 0.5
+  
+end
+
+# add some guitar if you please
+live_loop :guitar do
+  with_fx :echo, mix: 0.8, phase: 0.5 do
+    sample :guit_em9, rate: 0.9
+  end
+  #  sample :guit_em9, rate: -0.5
+  sleep 8
+end
+
+
+sleep 3
+3.times do
+  sleep 1
+  sample :bd_haus, rate: 5
+  sleep 1
+  play 40
+  play 58
+  
+  # let's get some lunar landing up in here
+  sample :ambi_lunar_land
+  sample :ambi_drone
+  sleep 4
+  
+  # drums anyone?
+  if one_in(2)
+    sample :drum_heavy_kick
+  else
+    sample :drum_cymbal_closed
+  end
+  sleep 0.5
+  
+  # who doesn't love a high pitch sound to puntuate
+  # time
+  play chord(:E8, :minor)
+  play [52, 55, 59], amp: 0.8
+  
+  sleep 1
+  
+  # Minor scales adding some major pizzazz 
+  2.times do
+    play chord(:E3, :minor)
+    sleep 0.4
+    play chord(:C3, :minor)
+    sleep 0.4
+    play chord(:D3, :minor)
+    sleep 0.4
+    play chord(:F3, :minor)
+    sleep 0.4
+    play chord(:G3, :minor)
+    sleep 0.4
+    play chord(:F3, :minor)
+    sleep 0.4
+    play chord(:D3, :minor)
+    sleep 0.4
+    play chord(:C3, :minor)
+    sleep 1
+  end
+  
+end
+
+
+
+
+
+
+
+
